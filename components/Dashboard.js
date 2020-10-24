@@ -35,7 +35,6 @@ async getMessage(){
   try {
       let response = await APIrequest.get('/api/budget/');
       const message = response.data;
-      console.log("message:",message.budget)
       this.setState({
           budget: message.budget,
       });

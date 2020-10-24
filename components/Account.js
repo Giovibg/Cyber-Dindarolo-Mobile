@@ -25,7 +25,6 @@ export default class Account extends Component {
   
   componentDidMount(){
     getUsername().then(username =>   {
-        console.log("username:",username);
         this.setState({name:username});
   })
 }

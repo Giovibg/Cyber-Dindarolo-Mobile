@@ -67,7 +67,6 @@ export default class Home extends Component  {
             this.setState({message : response.data});
             this.setState({update_budget: true})
             this.props.action();
-            //this.props.action();
             return response;
         } catch (error) {
             console.log(error.response.data);
@@ -139,7 +138,6 @@ export default class Home extends Component  {
             rightButtonBackgroundColor='#1DB954' 
             leftButtonBackgroundColor='#B91D37'/>
         </View>
-        <Text>{this.state.unit_price}€/each </Text>
         <TouchableOpacity style={styles.button}  onPress={this.handleSubmit.bind(this)}>
             <Text> Buy </Text>
         </TouchableOpacity>
