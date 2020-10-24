@@ -1,21 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Login from './components/Login'
+import Register from './components/Register'
+import Dashboard from './components/Dashboard'
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import {Appearance, AppearanceProvider, useColorScheme} from 'react-native-appearance';
+import {decode, encode} from 'base-64'
+import firebase from 'firebase';
+import 'firebase/firestore'
+import LinearGradient from 'react-native-linear-gradient';
+if (!global.btoa) {  global.btoa = encode }
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+if (!global.atob) { global.atob = decode }
+const AppNavigator = createStackNavigator({
+  Login: {screen: Login},
+  Register: {screen: Register},
+  Dashboard:{screen: Dashboard}
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = createAppContainer(AppNavigator);
+
+export default App;
+
+
