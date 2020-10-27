@@ -1,12 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 export const styles = StyleSheet.create({
     container:{
         alignItems:'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor:'#282828',
     },
     centeredView: {
       alignItems: "center",
-      marginTop: 40
+      marginTop: 40,
+      backgroundColor:'#282828',
     },
     textHigh:{
         color:'white',

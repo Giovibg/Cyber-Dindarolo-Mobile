@@ -28,7 +28,6 @@ export default class Home extends Component  {
           errors:{},
           product : '',
           message: {},
-          currency: 'EUR',
           update_budget: false,
           unit_price: 0.00,
           available: 0,
@@ -61,8 +60,7 @@ export default class Home extends Component  {
                 
                 const response =  await APIrequest.put('/api/transactions/', {
                 product: this.state.product_id,
-                quantity:this.state.quantity,
-                currency:this.state.currency   
+                quantity:this.state.quantity
             });
             this.setState({message : response.data});
             this.setState({update_budget: true})
