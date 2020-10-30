@@ -1,14 +1,13 @@
 import { StyleSheet, ImageBackground } from 'react-native';
 export const styles = StyleSheet.create({
     container:{
-        alignItems:'center',
-        justifyContent: 'center',
         backgroundColor:'#282828',
+        flex:1
     },
     centeredView: {
       alignItems: "center",
-      marginTop: 40,
-      backgroundColor:'#282828',
+      justifyContent: 'center',
+      marginTop: 40
     },
     textHigh:{
         color:'white',
@@ -22,7 +21,8 @@ export const styles = StyleSheet.create({
     username:{
         fontWeight:'bold',
         margin:20,
-        fontSize:20
+        fontSize:20,
+        color:'white'
     },
     viewText: {
         color: 'white',
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
         paddingTop: 30,
         paddingLeft: 10,
         paddingRight: 10,
-        marginTop:300,
+        marginTop:'80%',
         color:'#e72424',
         fontWeight:'bold'
     },

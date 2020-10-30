@@ -93,12 +93,17 @@ export const styles = StyleSheet.create({
         margin:40,
         width:200,
         borderRadius:30,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent:'center',
+        height:30,
     },
     error: {
         color:'red'
     },
     created:{
         color:'lightgreen'
-    }
+    },
+    btn_text:{
+      color:'white'
+  },
   });

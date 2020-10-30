@@ -12,6 +12,12 @@ import {
 } from 'react-native';
 import HistoryDetail from './HistoryDetail'
 
+const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  }
+  
 export default class Products extends Component  {
     constructor(props) {
         
@@ -47,10 +53,14 @@ export default class Products extends Component  {
 
     
     componentDidMount(){
-        
-      this.getMessage();
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
+            this.getMessage();
+          });
     }
     
+    componentWillUnmount() {
+        this._unsubscribe();
+      }
  
     handleClick = (item) => {
         this.setState({
@@ -69,11 +79,17 @@ export default class Products extends Component  {
     onRefresh = () => {
         //Clear old data of the list
         this.setState({
-            transactions: []
+            refreshing:true
           })
+          this.getMessage();
         //Call the Service to get the latest data
-        this.getMessage();
-      };
+        
+        wait(2000).then(() => {
+            
+            this.setState({refreshing:false})
+
+        });    
+    };
     
 
     render() {

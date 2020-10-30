@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
         paddingTop: 30,
         paddingLeft: 10,
         paddingRight: 10,
-        margin:60
+        margin:60,
     },
     caption: {
         flex: 1,
@@ -54,7 +54,13 @@ export const styles = StyleSheet.create({
         margin:40,
         width:200,
         borderRadius:30,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent:'center',
+        height:30,
+        
+    },
+    btn_text:{
+        color:'white'
     },
     error: {
         color:'red'
@@ -68,5 +74,16 @@ export const styles = StyleSheet.create({
         borderWidth: 1, 
         width: 60, 
         margin:30
-    }
+    },
+    select: {
+        fontSize: 16,
+        paddingHorizontal: 10,
+        paddingVertical: 8,
+        borderWidth: 0.5,
+        borderColor: 'purple',
+        borderRadius: 8,
+        color: 'black',
+        backgroundColor:'green',
+        paddingRight: 30, // to ensure the text is never behind the icon
+      },
 });

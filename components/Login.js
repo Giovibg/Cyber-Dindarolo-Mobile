@@ -64,7 +64,7 @@ export default class Login extends Component  {
                 <TextInput
                     style={styles.input}
                     placeholder="Insert Username"
-                    placeholderTextColor="#383838"
+                    placeholderTextColor="#888888"
                     
                     onChangeText={text => this.setState({username: text})}
                     value={this.state.username}
@@ -74,7 +74,7 @@ export default class Login extends Component  {
                 <TextInput
                     style={styles.input}
                     placeholder="Insert Password"
-                    placeholderTextColor="#383838"
+                    placeholderTextColor="#888888"
                     onChangeText={text => this.setState({password: text})}
                     value={this.state.password}
                     secureTextEntry={true}
@@ -83,7 +83,7 @@ export default class Login extends Component  {
                  { this.state.errors.password ? <Text style={styles.error}>{this.state.errors.password }</Text> : null}
                  { this.state.errors.detail ? <Text style={styles.error}>{this.state.errors.detail} </Text>: null}
                 <TouchableOpacity style={styles.button} onPress={this.handleSubmit.bind(this)}>
-                <Text> Login </Text>
+                <Text style={styles.btn_text}> Login </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.goRegister()}>
                     <Text style={styles.viewText}>SIGN UP</Text>

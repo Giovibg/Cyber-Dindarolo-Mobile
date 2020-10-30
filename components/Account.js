@@ -21,6 +21,7 @@ export default class Account extends Component {
         budget: 0.00,
         name:''
     };
+    this.logOut = this.logOut.bind(this);
   }
   
   componentDidMount(){
@@ -28,29 +29,48 @@ export default class Account extends Component {
         this.setState({name:username});
   })
 }
-  
-goOut()
-{
-    this.props.action();
-}
 
+async logOut() {
+  try {
+      const refresh_token = await SecureStore.getItemAsync('refresh_token');
+      const response = await APIrequest.post('/jwt_auth/blacklist/', {
+          refresh_token: refresh_token
+      });
+      APIrequest.defaults.headers['Authorization'] = null;
+      this.props.action();
+      return response
+  } catch (error) {
+      throw error;
+  }
+}
 
   render(){
     
 
     return(
-        <View>
-        <Text style={styles.username}>{this.state.name}</Text>
-        <View style={styles.centeredView}>
-            
-            <Text style={styles.textHigh}>Budget available: </Text>
-            <Text style={styles.budget}>{this.props.budget} €</Text>
-            <TouchableOpacity delayPressIn={0} onPress={() => this.goOut()}>
-                    <Text style={styles.viewText}>Logout</Text>
-            </TouchableOpacity>
-        </View>
-        
+        <View style={styles.container}>
+          <Text style={styles.username}>{this.state.name}</Text>
+          <View style={styles.centeredView}>
+              <Text style={styles.textHigh}>Budget available: </Text>
+              <Text style={styles.budget}>{this.props.budget} €</Text>
+              <TouchableOpacity delayPressIn={0} onPress={() => this.logOut()}>
+                  <Text style={styles.viewText}>Logout</Text>
+              </TouchableOpacity>
+          </View>
         </View>
     );
   }
 }
+Account.navigationOptions = screenProps => ({
+  title: "Cyber Dindarolo",
+  
+  headerTintColor: 'white',
+  headerStyle: {
+      backgroundColor: '#181818'
+    },
+  headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 24
+  },
+  
+})

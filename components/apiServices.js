@@ -40,8 +40,7 @@ APIrequest.interceptors.response.use(
     response => response,
     error => {
       const originalRequest = error.config;
-      
-
+    
       if (error.response.status === 401 && originalRequest.url === baseURL+'api/refresh/') {
         this.props.navigation.navigate("Login");
         return Promise.reject(error);
@@ -55,7 +54,6 @@ APIrequest.interceptors.response.use(
 
       if (error.response.status === 401)  
             {
-                
                // const refreshToken = localStorage.getItem('refresh_token');
                getRefresh().then(refreshToken =>   {
                //const refreshToken = SecureStore.getItemAsync('refresh_token');

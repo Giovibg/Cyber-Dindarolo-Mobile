@@ -70,7 +70,7 @@ export default class Register extends Component  {
                 <TextInput
                     style={styles.input}
                     placeholder="Username"
-                    placeholderTextColor="#383838"
+                    placeholderTextColor="#888888"
                     onChangeText={text => this.setState({username: text})}
                     value={this.state.username}
                     autoCapitalize={'none'}
@@ -79,7 +79,7 @@ export default class Register extends Component  {
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
-                    placeholderTextColor="#383838"
+                    placeholderTextColor="#888888"
                     onChangeText={text => this.setState({email: text})}
                     value={this.state.email}
                     autoCapitalize={'none'}
@@ -88,7 +88,7 @@ export default class Register extends Component  {
                 <TextInput
                     style={styles.input}
                     placeholder="Password"
-                    placeholderTextColor="#383838"
+                    placeholderTextColor="#888888"
                     onChangeText={text => this.setState({password: text})}
                     value={this.state.password}
                     secureTextEntry={true}
@@ -98,7 +98,7 @@ export default class Register extends Component  {
                 <TextInput
                     style={styles.input}
                     placeholder="Confirm Password"
-                    placeholderTextColor="#383838"
+                    placeholderTextColor="#888888"
                     onChangeText={text => this.setState({confirm_password: text})}
                     value={this.state.confirm_password}
                     secureTextEntry={true}
@@ -107,7 +107,7 @@ export default class Register extends Component  {
                 { this.state.errors.password2 ? <Text style={styles.error}>{this.state.errors.password2 }</Text> : null}
                 { this.state.errors.detail ? <Text style={styles.error}>{this.state.errors.detail} </Text>: null}
                 <TouchableOpacity style={styles.button} onPress={this.handleSubmit.bind(this)}>
-                <Text> Register </Text>
+                <Text style={styles.btn_text}> Register </Text>
                 </TouchableOpacity>
                 
             </View>

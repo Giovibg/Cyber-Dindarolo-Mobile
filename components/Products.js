@@ -23,7 +23,11 @@ const Item = ({ title }) => (
     </View>
   );
 
-
+  const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+  }
 export default class Products extends Component  {
     constructor(props) {
         
@@ -44,8 +48,8 @@ export default class Products extends Component  {
             let response = await APIrequest.get('/api/products/');
             const message = response.data;
             this.setState({
-                list_products: message,
-                refreshing: false
+                refreshing: false,
+                list_products: message
             });
             
             return message;
@@ -57,7 +61,12 @@ export default class Products extends Component  {
     
     componentDidMount(){
         
-      this.getMessage();
+      this._unsubscribe = this.props.navigation.addListener('focus', () => {
+        this.getMessage();
+      });
+    }
+    componentWillUnmount() {
+      this._unsubscribe();
     }
  
     handleClick = () => { 
@@ -79,14 +88,20 @@ export default class Products extends Component  {
         this.props.action()
 
       }
-    onRefresh = () => {
+      onRefresh = () => {
         //Clear old data of the list
         this.setState({
-            list_products: []
+            refreshing:true
           })
+          this.getMessage();
         //Call the Service to get the latest data
-        this.getMessage();
-      };  
+        
+        wait(2000).then(() => {
+            
+            this.setState({refreshing:false})
+
+       });    
+      };
 
     render() {
         const renderItem = ({ item }) => (
@@ -118,13 +133,17 @@ export default class Products extends Component  {
 }
 
 Products.navigationOptions = screenProps => ({
-    title: "Home",
-    
-    headerTintColor: '#FFFFFF',
-    headerTitleStyle: {
-        fontWeight: 'bold',
-        fontSize: 24
-    }
+  title: "Products",
+  
+  headerTintColor: 'white',
+  headerStyle: {
+      backgroundColor: '#181818'
+    },
+  headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 24
+  },
+  
 })
 
     

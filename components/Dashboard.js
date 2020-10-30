@@ -13,12 +13,12 @@ import History from './History';
 import Products from './Products';
 import Account from './Account';
 import APIrequest from './apiServices'
+import { useIsFocused } from '@react-navigation/native';
+
 
 const Tab = createBottomTabNavigator();
 
-const getUsername = async () => {
-  return await SecureStore.getItemAsync('username');
-  };
+
 
 export default class Dashboard extends Component{
   constructor(props) {
@@ -40,7 +40,7 @@ async getMessage(){
       });
       return message;
   }catch(error){
-      console.log("Budget error: ", JSON.stringify(error, null, 4));
+     // console.log("Budget error: ", JSON.stringify(error, null, 4));
       
   }
 }
@@ -48,7 +48,6 @@ async getMessage(){
 goOut(){
   this.props.navigation.navigate("Login");
 }
-
 componentDidMount(){
   this.getMessage();
 
@@ -103,8 +102,8 @@ componentDidMount(){
 
                 }}
               >
-                <Tab.Screen name="Home" children={() => (<Home action={this.getMessage}/> )}/>
-                <Tab.Screen name="Products" children={() => (<Products action={this.getMessage}/> )} />
+                <Tab.Screen name="Home" children={(props) =>  (<Home {...props} action={this.getMessage}/> )}/>
+                <Tab.Screen name="Products" children={(props) => (<Products {...props} action={this.getMessage}/> )} />
                 <Tab.Screen name="History" component={History} />
                 <Tab.Screen name="Account"  children={() => (<Account budget={this.state.budget} action={this.goOut}/> )} />
               </Tab.Navigator>

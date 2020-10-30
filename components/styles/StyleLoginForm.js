@@ -54,7 +54,11 @@ export const styles = StyleSheet.create({
         width:200,
         borderRadius:30,
         alignItems: 'center',
-        
+        justifyContent:'center',
+        height:30,
+    },
+    btn_text:{
+        color:'white'
     },
     error: {
         color:'red'

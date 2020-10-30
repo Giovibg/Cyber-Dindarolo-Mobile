@@ -85,7 +85,7 @@ export default class AddProduct extends Component {
                 <TextInput
                     style={styles.input}
                     placeholder="Name"
-                    placeholderTextColor="#383838"
+                    placeholderTextColor="#888888"
                     onChangeText={text => this.setState({name_prod: text})}
                     value={this.state.name_prod}
                     autoCapitalize={'none'}
@@ -94,7 +94,7 @@ export default class AddProduct extends Component {
                 <TextInput
                     style={styles.input}
                     placeholder="Description"
-                    placeholderTextColor="#383838"
+                    placeholderTextColor="#888888"
                     onChangeText={text => this.setState({description: text})}
                     value={this.state.description}
                     autoCapitalize={'none'}
@@ -110,8 +110,10 @@ export default class AddProduct extends Component {
                         totalHeight={50} 
                         iconSize={25}
                         step={1}
+                        borderColor='#484848'
                         valueType='integer'
                         rounded 
+                        minValue={1}
 
                         textColor='white' 
                         iconStyle={{ color: 'white' }} 
@@ -130,7 +132,9 @@ export default class AddProduct extends Component {
                         iconSize={25}
                         step={0.01}
                         valueType='real'
-                        rounded 
+                        rounded
+                        minValue={1} 
+                        borderColor='#484848'
                         
                         textColor='white' 
                         iconStyle={{ color: 'white' }} 
@@ -141,7 +145,7 @@ export default class AddProduct extends Component {
                  
                  
                 <TouchableOpacity style={styles.button} onPress={this.handleSubmit.bind(this)}>
-                <Text> Add Product </Text>
+                <Text style={styles.btn_text}> Add Product </Text>
                 </TouchableOpacity>
                 { this.state.errors.detail ? <Text style={styles.error}>{this.state.errors.detail} </Text>: null}
                 { this.state.message.message ? <Text style={styles.created}>{this.state.message.message}</Text> : null}
