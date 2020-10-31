@@ -1,13 +1,10 @@
-import React, { Component,  useState  } from 'react';
+import React, { Component} from 'react';
 import APIrequest from './apiServices'
 import { FlatList, RefreshControl } from 'react-native'
 import { styles } from './styles/Style_History';
 import {
-    TextInput,
     Text,
-    Button,
     View,
-    Alert,
     TouchableOpacity
 } from 'react-native';
 import HistoryDetail from './HistoryDetail'
@@ -60,7 +57,7 @@ export default class Products extends Component  {
     
     componentWillUnmount() {
         this._unsubscribe();
-      }
+    }
  
     handleClick = (item) => {
         this.setState({
@@ -74,7 +71,7 @@ export default class Products extends Component  {
           detail: false
         })
         
-      }
+    }
 
     onRefresh = () => {
         //Clear old data of the list
@@ -109,20 +106,21 @@ export default class Products extends Component  {
                     </TouchableOpacity>
                 </View>  
             </View>
-          );
+        );
+
         return (
             <View style={styles.container}>
                 <Text style={styles.textHigh}>History</Text>
                 <FlatList
-                data={this.state.transactions}
-                renderItem={renderItem}
-                keyExtractor={item => item.id.toString()}
-                refreshControl={
-                    <RefreshControl
-                        refreshing={this.state.refreshing}
-                        onRefresh={this.onRefresh}
-                    />
-                }
+                    data={this.state.transactions}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id.toString()}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={this.state.refreshing}
+                            onRefresh={this.onRefresh}
+                        />
+                    }
                 />     
                 {this.state.detail ? <HistoryDetail action={this.changeStatus} transact={this.state.single_transaction}/> : null}   
             </View>

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import {
-    Alert,
     Modal,
-    StyleSheet,
     Text,
     TextInput,
     TouchableOpacity,
@@ -14,30 +12,29 @@ import APIrequest from './apiServices'
 import NumericInput from 'react-native-numeric-input'
 
 export default class AddProduct extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        name_prod: '',
-        description: '',
-        quantity: 0,
-        unit_price: 0.00,
-        errors:{},
-        message: {},
-        visible:false
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            name_prod: '',
+            description: '',
+            quantity: 0,
+            unit_price: 0.00,
+            errors:{},
+            message: {},
+            visible:false
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    } 
     
-  componentDidMount(){
-    this.setState({visible : true});
-  }
+    componentDidMount(){
+        this.setState({visible : true});
+    }
 
-  handleClick = () => { 
-    this.setState({
-        
-        visible: false
-    });
-    this.props.action();
+    handleClick = () => { 
+        this.setState({
+            visible: false
+        });
+        this.props.action();
     }
 
 
@@ -57,51 +54,53 @@ export default class AddProduct extends Component {
         this.setState({quantity : 0});
         this.setState({unit_price : 0.00});
         return response;
-    } catch (error) {
-        console.log("error insert:",error.response);
-    this.setState({
-        errors:error.response.data
-    });
+
+        } catch (error) {
+            console.log("error insert:",error.response);
+            this.setState({
+                errors:error.response.data
+            });
+        }
     }
-    
-    }
 
-  render(){
-    
+    render(){
 
-    return(
-        <Modal
-        animationType="slide"
-        transparent={true}
-        visible={this.state.visible}
-        
-      >
-        <TouchableWithoutFeedback onPress={this.handleClick}>
-          <View style={styles.modalOverlay} />
-        </TouchableWithoutFeedback>
+        return(
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={this.state.visible}>
+                    <TouchableWithoutFeedback onPress={this.handleClick}>
+                      <View style={styles.modalOverlay} />
+                    </TouchableWithoutFeedback>
 
-        <View style={styles.modalContent}>
-        <Text style={styles.textLogin}>Add Product</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Name"
-                    placeholderTextColor="#888888"
-                    onChangeText={text => this.setState({name_prod: text})}
-                    value={this.state.name_prod}
-                    autoCapitalize={'none'}
-                />
-                 { this.state.errors.name ? <Text style={styles.error}>{this.state.errors.name }</Text> : null}
-                <TextInput
-                    style={styles.input}
-                    placeholder="Description"
-                    placeholderTextColor="#888888"
-                    onChangeText={text => this.setState({description: text})}
-                    value={this.state.description}
-                    autoCapitalize={'none'}
-                />
-                { this.state.errors.description ? <Text style={styles.error}>{this.state.errors.description }</Text> : null}
-                <View style={styles.viewText}>
-                    <Text style={styles.label}>Quantity</Text>
+                <View style={styles.modalContent}>
+                    <Text style={styles.textLogin}>Add Product</Text>
+
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Name"
+                        placeholderTextColor="#888888"
+                        onChangeText={text => this.setState({name_prod: text})}
+                        value={this.state.name_prod}
+                        autoCapitalize={'none'}
+                    />
+
+                    { this.state.errors.name ? <Text style={styles.error}>{this.state.errors.name }</Text> : null}
+
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Description"
+                        placeholderTextColor="#888888"
+                        onChangeText={text => this.setState({description: text})}
+                        value={this.state.description}
+                        autoCapitalize={'none'}
+                    />
+                    { this.state.errors.description ? <Text style={styles.error}>{this.state.errors.description }</Text> : null}
+
+                    <View style={styles.viewText}>
+                        <Text style={styles.label}>Quantity</Text>
+
                         <NumericInput 
                         value={this.state.quantity} 
                         onChange={value => this.setState({quantity:value})} 
@@ -114,15 +113,17 @@ export default class AddProduct extends Component {
                         valueType='integer'
                         rounded 
                         minValue={1}
-
                         textColor='white' 
                         iconStyle={{ color: 'white' }} 
                         rightButtonBackgroundColor='#1DB954' 
                         leftButtonBackgroundColor='#B91D37'/>
+
                         { this.state.errors.quantity ? <Text style={styles.error}>{this.state.errors.quantity }</Text> : null}
                     </View>
+
                     <View style={styles.viewText}>
-                    <Text style={styles.label}>Unit Price</Text>
+                        <Text style={styles.label}>Unit Price</Text>
+
                         <NumericInput 
                         value={this.state.unit_price} 
                         onChange={value => this.setState({unit_price:value})} 
@@ -135,25 +136,24 @@ export default class AddProduct extends Component {
                         rounded
                         minValue={1} 
                         borderColor='#484848'
-                        
+
                         textColor='white' 
                         iconStyle={{ color: 'white' }} 
                         rightButtonBackgroundColor='#1DB954' 
                         leftButtonBackgroundColor='#B91D37'/>
+
                         { this.state.errors.unit_price ? <Text style={styles.error}>{this.state.errors.unit_price }</Text> : null}
                     </View>
-                 
-                 
-                <TouchableOpacity style={styles.button} onPress={this.handleSubmit.bind(this)}>
-                <Text style={styles.btn_text}> Add Product </Text>
-                </TouchableOpacity>
-                { this.state.errors.detail ? <Text style={styles.error}>{this.state.errors.detail} </Text>: null}
-                { this.state.message.message ? <Text style={styles.created}>{this.state.message.message}</Text> : null}
-                
-        </View>
 
-      </Modal>
+                    <TouchableOpacity style={styles.button} onPress={this.handleSubmit.bind(this)}>
+                        <Text style={styles.btn_text}> Add Product </Text>
+                    </TouchableOpacity>
 
-    );
-  }
+                    { this.state.errors.detail ? <Text style={styles.error}>{this.state.errors.detail} </Text>: null}
+                    { this.state.message.message ? <Text style={styles.created}>{this.state.message.message}</Text> : null}
+
+                </View>
+            </Modal>
+        );
+    }
 }

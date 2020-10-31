@@ -22,38 +22,40 @@ const Tab = createBottomTabNavigator();
 
 export default class Dashboard extends Component{
   constructor(props) {
-    super(props);
-    this.state = {
-      budget: 0.00,
-      username: ''
-    };
-    this.getMessage = this.getMessage.bind(this);
-    this.goOut = this.goOut.bind(this);
-} 
+        super(props);
 
-async getMessage(){
-  try {
-      let response = await APIrequest.get('/api/budget/');
-      const message = response.data;
-      this.setState({
-          budget: message.budget,
-      });
-      return message;
-  }catch(error){
-     // console.log("Budget error: ", JSON.stringify(error, null, 4));
-      
-  }
-}
+        this.state = {
+          budget: 0.00,
+          username: ''
+        };
 
-goOut(){
-  this.props.navigation.navigate("Login");
-}
-componentDidMount(){
-  this.getMessage();
+        this.getMessage = this.getMessage.bind(this);
+        this.goOut = this.goOut.bind(this);
+    } 
 
-}
+    async getMessage(){
+        try {
+            let response = await APIrequest.get('/api/budget/');
+            const message = response.data;
+            this.setState({
+                budget: message.budget,
+            });
+            return message;
+        }catch(error){
+         // console.log("Budget error: ", JSON.stringify(error, null, 4));
+        
+        }
+    }
+
+    goOut(){
+        this.props.navigation.navigate("Login");
+    }
+
+    componentDidMount(){
+        this.getMessage();
+    }
     render(){
-      return(            
+        return(            
             <NavigationContainer>
               <Tab.Navigator
                 screenOptions={({ route }) => ({
@@ -101,7 +103,7 @@ componentDidMount(){
                   inactiveBackgroundColor:'#181818'
 
                 }}
-              >
+            >
                 <Tab.Screen name="Home" children={(props) =>  (<Home {...props} action={this.getMessage}/> )}/>
                 <Tab.Screen name="Products" children={(props) => (<Products {...props} action={this.getMessage}/> )} />
                 <Tab.Screen name="History" component={History} />

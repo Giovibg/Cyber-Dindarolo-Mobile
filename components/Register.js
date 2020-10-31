@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import APIrequest from './apiServices'
 import { styles } from './styles/StyleLoginForm';
-import {AsyncStorage}from 'react-native'
 import * as SecureStore from 'expo-secure-store'
-import axios from 'axios'
 import {
     TextInput,
     Text,
-    Button,
     View,
-    Alert,
     TouchableOpacity
 } from 'react-native';
-import { acc } from 'react-native-reanimated';
 
 
 
@@ -53,17 +48,14 @@ export default class Register extends Component  {
             return response
         }catch (error){
             this.setState({errors:error.response.data});
-        }
-
-            
+        }   
     } 
 
 
     
 
     render() {
-        
-        
+          
         return (
             <View style={styles.container}>
                 <Text style={styles.textLogin}>Register</Text>
@@ -106,10 +98,10 @@ export default class Register extends Component  {
                 />
                 { this.state.errors.password2 ? <Text style={styles.error}>{this.state.errors.password2 }</Text> : null}
                 { this.state.errors.detail ? <Text style={styles.error}>{this.state.errors.detail} </Text>: null}
+
                 <TouchableOpacity style={styles.button} onPress={this.handleSubmit.bind(this)}>
-                <Text style={styles.btn_text}> Register </Text>
+                    <Text style={styles.btn_text}> Register </Text>
                 </TouchableOpacity>
-                
             </View>
         )
     }

@@ -88,4 +88,4 @@ export const styles = StyleSheet.create({
         marginTop:40,
         color:'#e73434'
       },
-  });
+});

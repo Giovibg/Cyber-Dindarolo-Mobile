@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import APIrequest from './apiServices'
 import { styles } from './styles/StyleLoginForm';
-import {AsyncStorage}from 'react-native'
 import * as SecureStore from 'expo-secure-store'
-import { LinearGradient } from 'expo-linear-gradient';
-import axios from 'axios'
 import {
     TextInput,
     Text,
-    Button,
     View,
-    Alert,
     TouchableOpacity
 } from 'react-native';
-import { acc } from 'react-native-reanimated';
 
 export default class Login extends Component  {
     constructor(props) {
@@ -59,7 +53,6 @@ export default class Login extends Component  {
         return (
             <View style={styles.container}>
                
-                
                 <Text style={styles.textLogin}>Login</Text>
                 <TextInput
                     style={styles.input}
@@ -71,6 +64,7 @@ export default class Login extends Component  {
                     autoCapitalize={'none'}
                 />
                  { this.state.errors.username ? <Text style={styles.error}>{this.state.errors.username }</Text> : null}
+                
                 <TextInput
                     style={styles.input}
                     placeholder="Insert Password"
@@ -80,11 +74,14 @@ export default class Login extends Component  {
                     secureTextEntry={true}
                     autoCapitalize={'none'}
                 />
-                 { this.state.errors.password ? <Text style={styles.error}>{this.state.errors.password }</Text> : null}
-                 { this.state.errors.detail ? <Text style={styles.error}>{this.state.errors.detail} </Text>: null}
+
+                { this.state.errors.password ? <Text style={styles.error}>{this.state.errors.password }</Text> : null}
+                { this.state.errors.detail ? <Text style={styles.error}>{this.state.errors.detail} </Text>: null}
+
                 <TouchableOpacity style={styles.button} onPress={this.handleSubmit.bind(this)}>
-                <Text style={styles.btn_text}> Login </Text>
+                    <Text style={styles.btn_text}> Login </Text>
                 </TouchableOpacity>
+                
                 <TouchableOpacity onPress={() => this.goRegister()}>
                     <Text style={styles.viewText}>SIGN UP</Text>
                 </TouchableOpacity>
