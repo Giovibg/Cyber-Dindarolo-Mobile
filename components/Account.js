@@ -48,14 +48,14 @@ export default class Account extends Component {
     
         return(
             <View style={styles.container}>
-              <Text style={styles.username}>{this.state.name}</Text>
-              <View style={styles.centeredView}>
-                  <Text style={styles.textHigh}>Budget available: </Text>
-                  <Text style={styles.budget}>{this.props.budget} €</Text>
-                  <TouchableOpacity delayPressIn={0} onPress={() => this.logOut()}>
-                      <Text style={styles.viewText}>Logout</Text>
-                  </TouchableOpacity>
-              </View>
+                <Text style={styles.username}>{this.state.name}</Text>
+                <View style={styles.centeredView}>
+                    <Text style={styles.textHigh}>Budget available: </Text>
+                    <Text style={styles.budget}>{this.props.budget} €</Text>
+                    <TouchableOpacity delayPressIn={0} onPress={() => this.logOut()}>
+                        <Text style={styles.viewText}>Logout</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
