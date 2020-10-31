@@ -16,5 +16,6 @@ General informations, requirements, specifications and API features about the pr
 <img src="readme_img/list_product.jpg" width="200">
 <img src="readme_img/add_product.jpg" width="200">
 <img src="readme_img/history.jpg" width="200"> 
+<img src="readme_img/history_Detail.jpg" width="200"> 
 <img src="readme_img/account.jpg" width="200">
 
