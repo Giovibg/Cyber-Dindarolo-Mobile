@@ -43,7 +43,7 @@ export default class Register extends Component  {
             await SecureStore.setItemAsync('refresh_token', response.data.refresh);
             await SecureStore.setItemAsync('username',this.state.username);
             const token = await SecureStore.getItemAsync('access_token');
-            console.log("token ",token);
+            //console.log("token ",token);
             this.props.navigation.navigate("Dashboard");
             return response
         }catch (error){

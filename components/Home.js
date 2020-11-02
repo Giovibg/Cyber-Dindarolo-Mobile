@@ -3,7 +3,7 @@ import APIrequest from './apiServices'
 import { styles } from './styles/Style_Transaction';
 import RNPickerSelect from 'react-native-picker-select';
 import { Keyboard, StyleSheet } from 'react-native'
-import NumericInput from 'react-native-numeric-input'
+import NumericInput from 'rn-numeric-input'
 import {
     TextInput,
     Text,
@@ -70,6 +70,9 @@ export default class Home extends Component  {
     componentDidMount(){
         this._unsubscribe = this.props.navigation.addListener('focus', () => {
             this.getMessage();
+            this.setState({errors:{}})
+            this.setState({message:{}})
+            this.setState({unit_price:0.00, product: ''})
         });
     }
 

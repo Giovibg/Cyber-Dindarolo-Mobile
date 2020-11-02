@@ -9,7 +9,7 @@ import {
   } from "react-native";
 import { styles } from './styles/Style_AddProduct';
 import APIrequest from './apiServices'
-import NumericInput from 'react-native-numeric-input'
+import NumericInput from 'rn-numeric-input'
 
 export default class AddProduct extends Component {
     constructor(props) {
@@ -56,7 +56,7 @@ export default class AddProduct extends Component {
         return response;
 
         } catch (error) {
-            console.log("error insert:",error.response);
+            //console.log("error insert:",error.response);
             this.setState({
                 errors:error.response.data
             });

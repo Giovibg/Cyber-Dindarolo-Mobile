@@ -70,7 +70,7 @@ export default class Products extends Component  {
         this.setState({
             create: !this.state.create
         });
-        console.log("create:",this.state.create)
+        //console.log("create:",this.state.create)
     }
 
     changeStatus(){
