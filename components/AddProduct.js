@@ -134,7 +134,7 @@ export default class AddProduct extends Component {
                         step={0.01}
                         valueType='real'
                         rounded
-                        minValue={1} 
+                        minValue={0.01} 
                         borderColor='#484848'
 
                         textColor='white' 
