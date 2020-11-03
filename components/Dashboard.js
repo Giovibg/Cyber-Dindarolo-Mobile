@@ -13,7 +13,6 @@ import History from './History';
 import Products from './Products';
 import Account from './Account';
 import APIrequest from './apiServices'
-import { useIsFocused } from '@react-navigation/native';
 
 
 const Tab = createBottomTabNavigator();
