@@ -106,7 +106,7 @@ export default class Dashboard extends Component{
                 <Tab.Screen name="Home" children={(props) =>  (<Home {...props} action={this.getMessage}/> )}/>
                 <Tab.Screen name="Products" children={(props) => (<Products {...props} action={this.getMessage}/> )} />
                 <Tab.Screen name="History" component={History} />
-                <Tab.Screen name="Account"  children={() => (<Account budget={this.state.budget} action={this.goOut}/> )} />
+                <Tab.Screen name="Account"  children={() => (<Account budget={this.state.budget} action={this.goOut} update={this.getMessage}/> )} />
               </Tab.Navigator>
             </NavigationContainer>
             
